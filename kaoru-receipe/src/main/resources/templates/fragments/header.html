@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header th:fragments="header">
+        <div class="header_content">
+            <div>
+                <!-- <a th:href="@{}"> -->
+                    <img src="../static/img/icon.png" th:src="@{/img/icon.png}" alt="アイコン">
+                <!-- </a> -->
+            </div>
+            <div th:if="${session.user != null}" th:text="'ようこそ！ ' +${session.user.name} + ' さん'" class="welcome_message">ようこそ◯◯さん</div>
+            <div class="menu">
+                <a th:if="${session.user == null}" th:href="@{/toLogin}" href="login/login.html">ログイン</a>
+                <a th:if="${session.user != null}" th:href="@{/logout}" href="receipe/top.html">ログアウト</a>
+                <a th:if="${session.user == null}" th:href="@{/usrResister}" href="usr/user-resister.html">ユーザー登録</a>
+                <a th:if="${session.user != null}" th:href="@{/receipeResister}" href="receipe/resister.html">商品登録</a>
+                <a th:href="@{/top}" href="receipe/top.html">トップ</a>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kaoru-receipe</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+</head>
+
+<body>
+    <span th:insert="~{fragments/header :: header}"></span>
+        <div class="receipe">
+            <div class="receipe_card" th:each="receipe : ${receipes}">
+                <div class="img_wrapper">
+                    <img src="../../static/img/test.png" th:src="@{'/img/' + ${receipe.imagePath} }" alt="料理の写真" class="img_receipe">
+                </div>
+                <div>
+                    <div>
+                        <a href="detail.html" th:href="@{'/detail?id=' + ${receipe.id} }"
+                        class="title" name ="title" th:text="${receipe.title}">料理名</a>
+                    </div>
+                    <div class="introduction" name ="introduction" th:text="${receipe.introduction}">紹介文</div>
+                    <div class="ingredient" name="ingredient" th:text="${receipe.ingredient}">材料</div>
+                </div>
+    
+            </div>
+        </div>
+    <span th:insert="~{fragments/footer :: footer}"></span>
+</body>
+
+</html>

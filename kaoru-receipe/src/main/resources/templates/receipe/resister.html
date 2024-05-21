@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kaoru-receipe</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+</head>
+
+<body>
+    <span th:insert="~{fragments/header :: header}"></span>
+    <div class="receipe">
+        <div>
+            <div class="resister_title">レシピを登録する</div>
+            <form method="post" th:action="@{/saveReceipe}" th:object="${receipeResisterForm}">
+                <input type="text" name="title" placeholder="レシピのタイトル/料理名" class="title_input" th:field="*{title}">
+                <div class="img_and_distriction">
+                    <div class="img_wrapper">
+                        <input type="file" name="imagePath" class="img_receipe" th:field="*{imagePath}">
+                    </div>
+                    <div>
+                        <textarea name="introduction" id="" cols="30" rows="10" placeholder="レシピの紹介文"
+                            th:field="*{introduction}"></textarea>
+                        <div class="content_title">材料</div>
+                        <textarea name="ingredient" id="" cols="30" rows="10" placeholder="例） 
+                        &NewLine; 牛肉 &nbsp; 100g
+                        &NewLine; じゃがいも &nbsp; 1個
+                        &NewLine; にんじん &nbsp; 1/2本
+                        &NewLine; 玉ねぎ &nbsp; 1個
+                        &NewLine; カレールー &nbsp; 1/2パック" th:field="*{ingredient}">
+                    </textarea>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="receipe_detail">
+                    <div class="content_title">作り方</div>
+                    <input type="text" name="detail" th:field="*{detail}">
+                </div>
+
+                <hr>
+
+                <div class="receipe_detail">
+                    <div class="content_title">コツ・ポイント</div>
+                    <textarea name="point" id="" cols="30" rows="10" placeholder="このレシピを作るときのコツやポイントがあれば入力してください。"
+                        th:field="*{point}"></textarea>
+                </div>
+                <div class="button_wrapper">
+                    <button class="login_button">登録</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <span th:insert="~{fragments/footer :: footer}"></span>
+
+</body>
+
+</html>

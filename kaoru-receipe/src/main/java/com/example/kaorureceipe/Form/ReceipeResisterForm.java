@@ -1,7 +1,9 @@
-package com.example.kaorureceipe.Domain;
+package com.example.kaorureceipe.Form;
 
-public class Receipe {
-    private Integer id;
+/**
+ * レシピ登録のためのフォーム
+ */
+public class ReceipeResisterForm {
     // 料理名
     private String title;
     // 料理の紹介
@@ -14,31 +16,6 @@ public class Receipe {
     private String point;
 
     private String imagePath;
-    private boolean displayFlag;
-
-    public Receipe(Integer id, String title, String introduction, String ingredient, String detail,
-            String point, String imagePath,
-            boolean displayFlag) {
-        this.id = id;
-        this.title = title;
-        this.introduction = introduction;
-        this.ingredient = ingredient;
-        this.detail = detail;
-        this.point = point;
-        this.imagePath = imagePath;
-        this.displayFlag = displayFlag;
-    }
-
-    public Receipe() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -88,18 +65,10 @@ public class Receipe {
         this.imagePath = imagePath;
     }
 
-    public boolean isDisplayFlag() {
-        return displayFlag;
-    }
-
-    public void setDisplayFlag(boolean displayFlag) {
-        this.displayFlag = displayFlag;
-    }
-
     @Override
     public String toString() {
-        return "Receipe [id=" + id + ", title=" + title + ", detail=" + detail + ", ingredient=" + ingredient
-                + ", imagePath=" + imagePath + ", displayFlag=" + displayFlag + "]";
+        return "ReceipeResisterForm [title=" + title + ", introduction=" + introduction + ", ingredient=" + ingredient
+                + ", detail=" + detail + ", point=" + point + ", imagePath=" + imagePath + "]";
     }
 
 }

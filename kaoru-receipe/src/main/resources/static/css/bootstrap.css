@@ -1,0 +1,249 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: wheat;
+}
+
+header {
+    height: 64px;
+    background-color: white;
+    
+}
+footer {
+    font-size: 8px;
+    margin-bottom: 8px;
+}
+.header_content {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.welcome_message {
+    margin-left: 20px;
+}
+.menu {
+    margin-left: auto;
+}
+.menu a {
+    margin-left: 10px;
+    color: rgb(113, 113, 113);
+    text-decoration: none;
+    font-weight: bold;
+}
+.wrapper {
+    position: relative;
+    min-height: 184vh;
+    padding-bottom: 184px;
+}
+.footer_text {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+button {
+    height: 32px;
+    width: 240px;
+    cursor: pointer;
+    box-shadow: 2px 2px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+input {
+    width: 240px;
+    display: flex;
+    padding: 8px;
+    border: 0.3px solid rgb(0, 0, 0);
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-top: 64px;
+    margin-left: 240px;
+    margin-right: 240px;
+}
+
+.form_content {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    padding-left: 248px;
+    padding-right: 248px;
+    font-size: 12px;
+    
+}
+
+.login {
+    margin-bottom: 60px;
+}
+
+.text {
+    margin-bottom: 10px;
+}
+
+.unregistered {
+    font-size: 8px;
+}
+
+.login_button {
+    border: none;
+    background-color: orange;
+    color: white;
+    margin-top: 16px;
+}
+
+.resister_button_wrapper {
+   text-decoration: none;
+}
+.resister_button {
+    border: 0.3px solid gray;
+    background-color: white;
+    color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resister_input {
+    display: flex;
+    padding-bottom: 8px;
+    width: fit-content;
+    text-align: center;
+    align-items: center;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+.resister {
+    display: block;
+    margin: auto;
+    margin-top: 24px;
+}
+
+.complete_form {
+    padding-top: 88px;
+    padding-bottom: 88px;
+
+}
+
+.complete {
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.completation {
+    font-size: 32px;
+}
+.top_page_button_wrapper {
+    display: flex;
+    justify-content: center;
+}
+.receipe {
+    display: block;
+    background-color: white;
+    margin: 40px 240px;
+    max-width: 1200px;
+    padding: 24px;
+}
+
+.receipe_title {
+    color: orange;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.receipe_card {
+    width: 1152px;
+    height: 350px;
+    display: flex;
+}
+
+.img_wrapper {
+    height: 350px;
+    width: 200px;
+    margin-right: 20px;
+
+}
+
+.img_receipe {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    color: rgb(113, 113, 113);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.introduction {
+    font-size: 16px;
+}
+
+.ingredient {
+    color: orange;
+    font-size: 12px;
+}
+
+.img_and_distriction {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.receipe_detail {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.detail_card {
+    display: flex;
+}
+
+.detail {
+    margin-left: 20px;
+}
+
+.content_title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.introduction {
+    font-size: 16px;
+}
+
+.receipe_ingredient {
+    font-size: 20px;
+}
+
+.resister_title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.title_input {
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+}
