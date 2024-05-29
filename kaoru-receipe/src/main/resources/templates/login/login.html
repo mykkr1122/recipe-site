@@ -11,27 +11,28 @@
 
 <body>
     <span th:insert="~{fragments/header :: header}"></span>
+    <div class="content">
+        <div class="form">
+            <div class="form_content">
+                <form method="post" th:action="@{/login}" class="login" th:object="${loginForm}">
+                    <div class="text">
+                        <input type="text" name="email" placeholder="メールアドレス" th:field="*{email}">
+                    </div>
 
-    <div class="form">
-        <div class="form_content">
-            <form method="post" th:action="@{/login}" class="login" th:object="${loginForm}">
-                <div class="text">
-                    <input type="text" name="email" placeholder="メールアドレス" th:field="*{email}">
+                    <div class="text">
+                        <input type="password" name="password" placeholder="パスワード" th:field="*{password}">
+                    </div>
+
+                    <button class="login_button">ログイン</button>
+                </form>
+
+                <div class="unregistered">
+                    <span>初めての方はこちら</span>
                 </div>
-
-                <div class="text">
-                    <input type="password" name="password" placeholder="パスワード" th:field="*{password}">
-                </div>
-
-                <button class="login_button">ログイン</button>
-            </form>
-
-            <div class="unregistered">
-                <span>初めての方はこちら</span>
+                <a href="../usr/user-resister.html" th:href="@{/usrResister}" class="resister_button_wrapper">
+                    <button class="resister_button">新規登録</button>
+                </a>
             </div>
-            <a href="../usr/user-resister.html" th:href="@{/usrResister}" class="resister_button_wrapper">
-                <button class="resister_button">新規登録</button>
-            </a>
         </div>
     </div>
     <span th:insert="~{fragments/footer :: footer}"></span>

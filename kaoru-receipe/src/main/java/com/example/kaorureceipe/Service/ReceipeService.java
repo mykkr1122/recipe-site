@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.kaorureceipe.Domain.Receipe;
+import com.example.kaorureceipe.Form.ReceipeResisterForm;
 import com.example.kaorureceipe.Repository.ReceipeRepository;
 
 @Service
@@ -30,7 +31,27 @@ public class ReceipeService {
         return receipes;
     }
 
-    public void saveReceipe(Receipe receipe) {
+    public void saveReceipe(ReceipeResisterForm form) {
+        Receipe receipe = new Receipe();
+        receipe.setTitle(form.getTitle());
+        receipe.setIntroduction(form.getIntroduction());
+        receipe.setServing(form.getServing());
+        receipe.setIngredients(form.getIngredients());
+        receipe.setDetail(form.getDetail());
+        receipe.setPoint(form.getPoint());
+        receipe.setImagePath(form.getImagePath());
+
+        // try {
+        //     String imagePath = saveImage(form.getImagePath());
+        //     receipe.setImagePath(imagePath);
+        // } catch (IOException e){
+        //     e.getStackTrace();
+        // }
+        
         repository.insert(receipe);
+    }
+
+    public void deleteReceipe(Integer id){
+        repository.updateDisplayFlagById(id);
     }
 }

@@ -11,16 +11,18 @@
 
 <body>
     <span th:insert="~{fragments/header :: header}"></span>
-    <div class="form complete_form">
-        <div class="complete">
-            <div class="completation">
-                <span>レシピの登録が完了しました！</span>
-            </div>
-            <form th:action="@{/top}">
-                <div class="top_page_button_wrapper">
-                    <button class="login_button">トップページへ</button>
+    <div class="content">
+        <div class="form complete_form">
+            <div class="complete">
+                <div class="completation">
+                    <span>レシピの登録が完了しました！</span>
                 </div>
-            </form>
+                <form th:action="@{/top}">
+                    <div class="top_page_button_wrapper">
+                        <button class="login_button">トップページへ</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <span th:insert="~{fragments/footer :: footer}"></span>

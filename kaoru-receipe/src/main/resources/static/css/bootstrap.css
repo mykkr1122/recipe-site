@@ -1,18 +1,31 @@
+html {
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     background-color: wheat;
 }
 
+.content {
+    flex: 1;
+}
+
 header {
     height: 64px;
     background-color: white;
-    
+
 }
+
 footer {
+    height: 40px;
     font-size: 8px;
     margin-bottom: 8px;
 }
+
 .header_content {
     display: flex;
     align-items: center;
@@ -21,23 +34,27 @@ footer {
     padding-left: 20px;
     padding-right: 20px;
 }
+
 .welcome_message {
     margin-left: 20px;
 }
+
 .menu {
     margin-left: auto;
 }
+
 .menu a {
     margin-left: 10px;
     color: rgb(113, 113, 113);
     text-decoration: none;
     font-weight: bold;
 }
+
 .wrapper {
     position: relative;
-    min-height: 184vh;
-    padding-bottom: 184px;
+    padding-bottom: 100px;
 }
+
 .footer_text {
     display: flex;
     justify-content: center;
@@ -78,7 +95,7 @@ input {
     padding-left: 248px;
     padding-right: 248px;
     font-size: 12px;
-    
+
 }
 
 .login {
@@ -101,8 +118,9 @@ input {
 }
 
 .resister_button_wrapper {
-   text-decoration: none;
+    text-decoration: none;
 }
+
 .resister_button {
     border: 0.3px solid gray;
     background-color: white;
@@ -148,10 +166,12 @@ label {
 .completation {
     font-size: 32px;
 }
+
 .top_page_button_wrapper {
     display: flex;
     justify-content: center;
 }
+
 .receipe {
     display: block;
     background-color: white;
@@ -167,15 +187,16 @@ label {
 }
 
 .receipe_card {
-    width: 1152px;
+    max-width: 1152px;
     height: 350px;
     display: flex;
+    margin-bottom: 40px;
 }
 
 .img_wrapper {
     height: 350px;
-    width: 200px;
-    margin-right: 20px;
+    width: 240px;
+    margin-right: 40px;
 
 }
 
@@ -193,16 +214,18 @@ label {
 
 .introduction {
     font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.ingredient {
+.ingredients {
     color: orange;
     font-size: 12px;
 }
 
 .img_and_distriction {
     display: flex;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 48px;
 }
 
 .receipe_detail {
@@ -228,7 +251,7 @@ label {
     font-size: 16px;
 }
 
-.receipe_ingredient {
+.receipe_ingredients {
     font-size: 20px;
 }
 
@@ -238,7 +261,7 @@ label {
 }
 
 .title_input {
-    width: 500px;
+    width: 556px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -246,4 +269,78 @@ label {
 .button_wrapper {
     display: flex;
     justify-content: center;
+}
+
+.camera_icon {
+    height: 98%;
+    width: 100%;
+    opacity: 0.5;
+}
+
+.resister_content {
+    margin-left: 40px;
+}
+
+.resister_img_wrapper {
+    margin-right: 40px;
+    height: 380px;
+    width: 260px;
+}
+
+.resister_img_button {
+    height: 360px;
+    width: 250px;
+    border: black;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.file_content {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.file_input {
+    border: none;
+    padding-left: 0;
+    margin-bottom: 8px;
+}
+
+#base64text {
+    display: none;
+}
+
+.textarea {
+    width: 570px;
+    height: 200px;
+}
+
+.content_title_and_serving {
+    display: flex;
+    align-items: center;
+}
+
+.content_ingredient_title {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    display: inline-block;
+}
+
+.serving_content {
+    padding-bottom: 14px;
+    margin-left: 10px;
+    display: flex;
+    line-height: 1.2;
+    vertical-align: middle;
+}
+
+.ingredient_title {
+    margin-top: 20px;
+}
+
+#uploadImageArea {
+    height: 350px;
+    width: 200px;
 }

@@ -23,7 +23,8 @@ public class ReceipeRepository {
                 rs.getInt("id"),
                 rs.getString("title"),
                 rs.getString("introduction"),
-                rs.getString("ingredient"),
+                rs.getInt("serving"),
+                rs.getString("ingredients"),
                 rs.getString("detail"),
                 rs.getString("point"),
                 rs.getString("image_path"),
@@ -39,7 +40,9 @@ public class ReceipeRepository {
      */
     public Receipe load(Integer id) {
         String sql = """
-                SELECT * FROM receipe WHERE id = :id;
+                SELECT * 
+                  FROM receipe 
+                 WHERE id = :id;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
         Receipe receipe = template.queryForObject(sql, param, RECEIPE_ROW_MAPPER);
@@ -54,7 +57,9 @@ public class ReceipeRepository {
      */
     public Receipe findByTitle(String title) {
         String sql = """
-                SELECT * FROM receipe WHERE title = :title;
+                SELECT * 
+                  FROM receipe 
+                 WHERE title = :title;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("title", title);
         Receipe receipe = template.queryForObject(sql, param, RECEIPE_ROW_MAPPER);
@@ -68,8 +73,9 @@ public class ReceipeRepository {
      */
     public List<Receipe> findAll() {
         String sql = """
-                SELECT id, title, introduction, ingredient, detail, point, image_path, display_flag
-                  FROM receipe;
+                SELECT id, title, introduction, serving, ingredients, detail, point, image_path, display_flag
+                  FROM receipe
+                 WHERE display_flag = false;
                 """;
         List<Receipe> receipes = template.query(sql, RECEIPE_ROW_MAPPER);
         return receipes;
@@ -77,14 +83,29 @@ public class ReceipeRepository {
 
     /**
      * レシピの登録
+     * 
      * @param receipe
      */
     public void insert(Receipe receipe) {
         String sql = """
-                INSERT INTO receipe (title, introduction, ingredient, detail, point, image_path)
-                VALUES (:title, :introduction, :ingredient, :detail, :point, :imagePath);
+                INSERT INTO receipe (title, introduction, serving, ingredients, detail, point, image_path)
+                VALUES (:title, :introduction, :serving, :ingredients, :detail, :point, :imagePath);
                 """;
         SqlParameterSource param = new BeanPropertySqlParameterSource(receipe);
+        template.update(sql, param);
+    }
+
+    /**
+     * レシピを論理削除する（display_flagを false から true にする）
+     * @param id
+     */
+    public void updateDisplayFlagById(Integer id) {
+        String sql = """
+                UPDATE receipe
+                   SET display_flag = true
+                 WHERE id = :id;
+                """;
+        SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
         template.update(sql, param);
     }
 

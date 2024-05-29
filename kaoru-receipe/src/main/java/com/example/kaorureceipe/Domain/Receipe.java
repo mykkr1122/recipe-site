@@ -6,8 +6,10 @@ public class Receipe {
     private String title;
     // 料理の紹介
     private String introduction;
+    // ~人前
+    private Integer serving;
     // 材料
-    private String ingredient;
+    private String ingredients;
     // 作り方
     private String detail;
     // コツ・ポイント
@@ -16,13 +18,13 @@ public class Receipe {
     private String imagePath;
     private boolean displayFlag;
 
-    public Receipe(Integer id, String title, String introduction, String ingredient, String detail,
-            String point, String imagePath,
-            boolean displayFlag) {
+    public Receipe(Integer id, String title, String introduction, Integer serving, String ingredients, String detail,
+            String point, String imagePath, boolean displayFlag) {
         this.id = id;
         this.title = title;
         this.introduction = introduction;
-        this.ingredient = ingredient;
+        this.serving = serving;
+        this.ingredients = ingredients;
         this.detail = detail;
         this.point = point;
         this.imagePath = imagePath;
@@ -56,12 +58,20 @@ public class Receipe {
         this.introduction = introduction;
     }
 
-    public String getIngredient() {
-        return ingredient;
+    public Integer getServing() {
+        return serving;
     }
 
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
+    public void setServing(Integer serving) {
+        this.serving = serving;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getDetail() {
@@ -98,7 +108,8 @@ public class Receipe {
 
     @Override
     public String toString() {
-        return "Receipe [id=" + id + ", title=" + title + ", detail=" + detail + ", ingredient=" + ingredient
+        return "Receipe [id=" + id + ", title=" + title + ", detail=" + detail + ", serving=" + serving
+                + ", ingredients=" + ingredients
                 + ", imagePath=" + imagePath + ", displayFlag=" + displayFlag + "]";
     }
 

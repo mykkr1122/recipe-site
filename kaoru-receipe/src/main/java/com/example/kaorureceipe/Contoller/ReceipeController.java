@@ -31,4 +31,11 @@ public class ReceipeController {
         return "/receipe/detail";
     }
 
+    @RequestMapping("")
+    public String deleteReceipe(Integer id){
+        service.deleteReceipe(id);
+
+        return "redirect:/top";
+    }
+
 }

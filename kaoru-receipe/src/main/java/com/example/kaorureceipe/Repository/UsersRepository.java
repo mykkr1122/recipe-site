@@ -34,7 +34,8 @@ public class UsersRepository {
      */
     public Users load(Integer id) {
         String sql = """
-                SELECT * FROM users
+                SELECT * 
+                  FROM users
                  WHERE id = :id;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
@@ -50,8 +51,10 @@ public class UsersRepository {
      */
     public Users login(String email, String password) {
         String sql = """
-                SELECT * FROM users
-                 WHERE email = :email AND password =:password;
+                SELECT * 
+                  FROM users
+                 WHERE email = :email 
+                   AND password = :password;
                 """;
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("email", email).addValue("password", password);

@@ -11,7 +11,7 @@
 
 <body>
     <span th:insert="~{fragments/header :: header}"></span>
-    <div>
+    <div class="content">
         <div class="form">
             <div class="form_content">
                 <form method="post" th:action="@{/insertUserInfo}" th:object="${userResisterForm}">
@@ -19,7 +19,7 @@
                         <label for="name">お名前</label>
                         <input id="name" type="text" name="name" th:field="*{name}">
                     </div>
-    
+
                     <div class="resister_input">
                         <label for="email">メールアドレス</label>
                         <input id="email" type="text" name="email" th:field="*{email}">
@@ -28,7 +28,7 @@
                         <label for="password">パスワード</label>
                         <input id="password" type="password" name="password" th:field="*{password}">
                     </div>
-    
+
                     <button class="resister_button resister">登録</button>
                 </form>
             </div>

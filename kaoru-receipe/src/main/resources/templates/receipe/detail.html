@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,54 @@
     <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 
 </head>
+
 <body>
     <span th:insert="~{fragments/header :: header}"></span>
+    <div class="content">
         <div class="receipe">
             <div>
                 <div class="receipe_title" th:text="${receipe.title}">料理名</div>
                 <div class="img_and_distriction">
                     <div class="img_wrapper">
-                        <img src="../../static/img/test.png"
-                        th:src="@{'/img/' + ${receipe.imagePath} }" alt="料理の写真" class="img_receipe">
+                        <img src="../../static/img/test.png" th:src="@{${receipe.imagePath} }" alt="料理の写真"
+                            class="img_receipe">
                     </div>
                     <div>
                         <div class="introduction" th:text="${receipe.introduction}">紹介文</div>
-                        <div class="content_title">材料</div>
-                        <div class="receipe_ingredient" th:text="${receipe.ingredient}">材料の詳細</div>
+                        <div class="content_title_and_serving">
+                            <div class="content_title content_ingredient_title">材料</div>
+                            <div class="serving_content">
+                                <div th:text="${receipe.serving}">2</div>
+                                <div>人分</div>
+                            </div>
+                        </div>
+                        <div class="receipe_ingredients" th:text="${receipe.ingredients}">材料の詳細</div>
                     </div>
-                    
+
                 </div>
 
                 <hr>
-    
+
                 <div class="receipe_detail">
                     <div class="content_title">作り方</div>
                     <div class="detail_card">
                         <div class="detail" th:text="${receipe.detail}">作り方その1</div>
-                        <div class="detail">作り方その2</div>
-                        <div class="detail">作り方その3</div>
+                        <!-- <div class="detail">作り方その2</div>
+                        <div class="detail">作り方その3</div> -->
                     </div>
                 </div>
                 <hr>
                 <div class="receipe_detail">
                     <div class="content_title">コツ・ポイント</div>
-                    <div th:text="${receipe.point}">コツ・ポイントの説明</div>
+                    <div class="detail"  th:text="${receipe.point}">コツ・ポイントの説明</div>
                 </div>
             </div>
-            
-            
+
+
         </div>
-        <span th:insert="~{fragments/footer :: footer}"></span>
+    </div>
+    <span th:insert="~{fragments/footer :: footer}"></span>
 
 </body>
+
 </html>

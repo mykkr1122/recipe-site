@@ -1,13 +1,11 @@
 package com.example.kaorureceipe.Contoller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.kaorureceipe.Domain.Receipe;
 import com.example.kaorureceipe.Form.ReceipeResisterForm;
 import com.example.kaorureceipe.Service.ReceipeService;
 
@@ -30,10 +28,8 @@ public class InsertReceipeInfoController {
 
     @PostMapping("/saveReceipe")
     public String saveReceipe(ReceipeResisterForm form) {
-        Receipe receipe = new Receipe();
-        BeanUtils.copyProperties(form, receipe);
-
-        service.saveReceipe(receipe);
+        
+        service.saveReceipe(form);
 
         return "receipe/completation";
     }
