@@ -40,18 +40,18 @@ public class ReceipeService {
         receipe.setDetail(form.getDetail());
         receipe.setPoint(form.getPoint());
         receipe.setImagePath(form.getImagePath());
-
-        // try {
-        //     String imagePath = saveImage(form.getImagePath());
-        //     receipe.setImagePath(imagePath);
-        // } catch (IOException e){
-        //     e.getStackTrace();
-        // }
-        
         repository.insert(receipe);
     }
 
-    public void deleteReceipe(Integer id){
+    public void deleteReceipe(Integer id) {
         repository.updateDisplayFlagById(id);
+    }
+
+    public List<Receipe> findReceipesWithPagination(int offset, int limit) {
+        return repository.findReceipesWithPagination(offset, limit);
+    }
+
+    public int countReceipe() {
+        return repository.countReceipe();
     }
 }

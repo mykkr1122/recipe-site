@@ -5,6 +5,7 @@ classDiagram
         - id Integer SERIAL PRIMALY KEY
         - title String
         - introduction String
+        - serving Integer
         - ingredients String
         - detail String
         - point String
@@ -59,6 +60,7 @@ classDiagram
     class ReceipeResisterForm {
         - title String
         - introduction String
+        - serving Integer
         - ingredients String
         - detail String
         - point String

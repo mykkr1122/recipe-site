@@ -32,6 +32,11 @@ public class ReceipeRepository {
         return receipe;
     };
 
+    private static final RowMapper<String> TITLE_ROW_MAPPER = (rs, i) -> {
+        String title = rs.getString("title");
+        return title;
+    };
+
     /**
      * idから検索
      * 
@@ -40,8 +45,8 @@ public class ReceipeRepository {
      */
     public Receipe load(Integer id) {
         String sql = """
-                SELECT * 
-                  FROM receipe 
+                SELECT *
+                  FROM receipe
                  WHERE id = :id;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
@@ -57,13 +62,38 @@ public class ReceipeRepository {
      */
     public Receipe findByTitle(String title) {
         String sql = """
-                SELECT * 
-                  FROM receipe 
+                SELECT *
+                  FROM receipe
                  WHERE title = :title;
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("title", title);
         Receipe receipe = template.queryForObject(sql, param, RECEIPE_ROW_MAPPER);
         return receipe;
+    }
+
+    /**
+     * すべての料理名のリストを返す
+     * 
+     * @return
+     */
+    public List<String> getTitleList() {
+        String sql = """
+                SELECT title
+                  FROM receipe
+                 WHERE display_flag = false;
+                """;
+        List<String> titleList = template.query(sql, TITLE_ROW_MAPPER);
+        return titleList;
+    }
+
+    public int countReceipe() {
+
+        String sql = """
+                SELECT COUNT(*)
+                  FROM receipe;
+                """;
+
+        return template.queryForObject(sql, new MapSqlParameterSource(), Integer.class);
     }
 
     /**
@@ -97,6 +127,7 @@ public class ReceipeRepository {
 
     /**
      * レシピを論理削除する（display_flagを false から true にする）
+     * 
      * @param id
      */
     public void updateDisplayFlagById(Integer id) {
@@ -107,6 +138,21 @@ public class ReceipeRepository {
                 """;
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
         template.update(sql, param);
+    }
+
+    public List<Receipe> findReceipesWithPagination(int offset, int limit) {
+        String sql = """
+                SELECT id, title, introduction, serving, ingredients, detail, point, image_path, display_flag
+                 FROM receipe
+                 WHERE display_flag = false
+                 LIMIT :limit OFFSET :offset;
+                """;
+
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        param.addValue("limit", limit);
+        param.addValue("offset", offset);
+
+        return template.query(sql, param, RECEIPE_ROW_MAPPER);
     }
 
 }

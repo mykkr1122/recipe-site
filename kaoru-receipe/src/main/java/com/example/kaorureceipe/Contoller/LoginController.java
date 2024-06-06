@@ -51,7 +51,7 @@ public class LoginController {
     @RequestMapping("logout")
     public String logout(){
         session.invalidate();
-        return "forward:/top";
+        return "/login/logout";
     }
 
 }

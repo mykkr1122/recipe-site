@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    height: 64px;
+    height: 160px;
     background-color: white;
 
 }
@@ -344,3 +344,56 @@ label {
     height: 350px;
     width: 200px;
 }
+
+.icon-wrapper {
+    width: 55px;
+    height: 48px;
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+}
+.autocomplete{  
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.autocomplete_content {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.autocomplete_input {
+    width: 160px;
+}
+
+.autocomplete_button {
+    width: 80px;
+    margin-left: 108px;
+    background-color: rgb(225, 223, 223);
+    border: solid 0.1px;
+}
+
+.pagination ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.pagination li {
+    margin: 0 5px;
+}
+.pagination a {
+    text-decoration: none;
+    color: #007bff;
+}
+.pagination a:hover {
+    text-decoration: underline;
+}
+.pagination .active a {
+    font-weight: bold;
+    color: #000;
+}
+
