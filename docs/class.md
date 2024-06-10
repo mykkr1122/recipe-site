@@ -1,7 +1,7 @@
 ```mermaid
 classDiagram
 
-    class Receipe {
+    class Recipe {
         - id Integer SERIAL PRIMALY KEY
         - title String
         - introduction String
@@ -20,11 +20,11 @@ classDiagram
         - password String
     }
 
-    class ReceipeRepository {
+    class RecipeRepository {
         + load(id)
         + findByTitle(title)
         + findAll()
-        + insert(receipe)
+        + insert(recipe)
     }
 
     class UsersRepository {
@@ -33,11 +33,11 @@ classDiagram
         + insert(users)
     }
 
-    class ReceipeService {
+    class RecipeService {
         + load(id)
         + findByTitle(title)
         + findAll()
-        + saveReceipe(receipe)
+        + saveRecipe(recipe)
     }
 
     class UsersService {
@@ -57,7 +57,7 @@ classDiagram
         - password String
     }
 
-    class ReceipeResisterForm {
+    class RecipeResisterForm {
         - title String
         - introduction String
         - serving Integer
@@ -78,14 +78,14 @@ classDiagram
         + inserUserInfo()
     }
 
-    class ReceipeController {
+    class RecipeController {
         + index()
         + detail()
     }
 
-    class InsertReceipeInfoController {
-        + receipeResister()
-        + saveReceipe()
+    class InsertRecipeInfoController {
+        + recipeResister()
+        + saveRecipe()
     }
 
     LoginForm --|> Users : uses
@@ -94,10 +94,10 @@ classDiagram
     UserResisterForm --|> Users :uses
     InsertUserInfoController --|> UserResisterForm :uses
 
-    ReceipeResisterForm --|> Receipe : uses
-    InsertReceipeInfoController --|> ReceipeResisterForm : uses
+    RecipeResisterForm --|> Recipe : uses
+    InsertRecipeInfoController --|> RecipeResisterForm : uses
 
-    ReceipeController --|> Receipe : uses
+    RecipeController --|> Recipe : uses
 
 
     UsersRepository <.. UsersService 
@@ -105,10 +105,10 @@ classDiagram
     UsersService <.. LoginController 
     UsersService<.. InsertUserInfoController
 
-    ReceipeRepository <.. ReceipeService
+    RecipeRepository <.. RecipeService
 
-    ReceipeService <.. ReceipeController
-    ReceipeService <.. InsertReceipeInfoController
+    RecipeService <.. RecipeController
+    RecipeService <.. InsertRecipeInfoController
 
 
 ```

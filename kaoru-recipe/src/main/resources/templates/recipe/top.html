@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kaoru-recipe</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../../static/css/carousel.css" th:href="@{/css/carousel.css}">
+</head>
+
+<body>
+    <span th:insert="~{fragments/header :: header}"></span>
+    <div class="content">
+        <div class="recipe">
+            <div class="recipe_card" th:each="recipe : ${recipes}">
+                <div class="img_wrapper">
+                    <a th:href="@{'/detail?id=' + ${recipe.id}}">
+                        <img th:src="@{ ${recipe.imagePath} }" alt="料理の写真" class="img_recipe">
+                    </a>
+                </div>
+                <div>
+                    <div>
+                        <a href="detail.html" th:href="@{'/detail?id=' + ${recipe.id} }" class="title" name="title"
+                            th:text="${recipe.title}">料理名</a>
+                    </div>
+                    <div class="introduction" name="introduction" th:text="${recipe.introduction}">紹介文</div>
+                    <div class="ingredients" name="ingredients" th:text="${recipe.ingredients}">材料</div>
+                </div>
+
+            </div>
+            <!-- ページング -->
+            <div class="pagination">
+                <ul>
+                    <!-- Previous Page Link -->
+                    <li th:if="${currentPage > 0}">
+                        <a th:href="@{/top(page=${currentPage - 1}, size=${pageSize})}">&lt;</a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    <li th:if="${currentPage > 2}">
+                        <a th:href="@{/top(page=0, size=${pageSize})}">1</a>
+                        <span>...</span>
+                    </li>
+                    <li th:each="i : ${pageNumbers}" th:classappend="${i == currentPage} ? 'active'">
+                        <a th:href="@{/top(page=${i}, size=${pageSize})}" th:text="${i + 1}"></a>
+                    </li>
+                    <li th:if="${currentPage < totalPage - 3}">
+                        <span>...</span>
+                        <a th:href="@{/top(page=${totalPage - 1}, size=${pageSize})}" th:text="${totalPage}"></a>
+                    </li>
+                    <!-- Next Page Link -->
+                    <li th:if="${currentPage < totalPage - 1}">
+                        <a th:href="@{/top(page=${currentPage + 1}, size=${pageSize})}"> &gt;</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="carousel">
+        <!-- 画像表示部分 -->
+        <div id="items-wrapper">
+            <img class="active" th:src="@{/img/breakfast.jpeg}" alt="朝食">
+            <img class="active" th:src="@{/img/fish.jpeg}" alt="魚"> 
+            <img class="active" th:src="@{/img/humberger.jpeg}" alt="ハンバーガー">
+            <img class="active" th:src="@{/img/onigiri.jpg}" alt="おにぎり">
+            <img class="active" th:src="@{/img/ホットケーキ.jpg}" alt="ホットケーキ">
+        </div>
+
+        <!-- 画像をタブで切り替えるボタン -->
+        <div id="select-tabs">
+            <button class="active" onclick="changeToSelectItem(0)"></button>
+            <button onclick="changeToSelectItem(1)"></button>
+            <button onclick="changeToSelectItem(2)"></button>
+            <button onclick="changeToSelectItem(3)"></button>
+            <button onclick="changeToSelectItem(4)"></button>
+        </div>
+        
+        <!-- 隣の画像に移動するボタン -->
+        <div id="change-buttons">
+            <button onclick="changeToPrevItem()"></button>
+            <button onclick="changeToNextItem()"></button>
+        </div>
+    </div>
+
+
+    <!-- <div class="carousel"> -->
+        <!-- 画像表示部分 -->
+        <!-- <div id="items-wrapper">
+            <div th:each="recipe, stat : ${recipes}" th:class="${stat.index == 0} ? 'active' : ''">
+                <img th:src="@{${recipe.imagePath}}">
+            </div>
+        </div>
+     -->
+        <!-- 画像をタブで切り替えるボタン -->
+        <!-- <div id="select-tabs">
+            <button th:each="recipe, stat : ${recipes}" th:class="${stat.index == 0} ? 'active' : ''"
+                    th:onclick="'changeToSelectItem(' + ${stat.index} + ')'"></button>
+        </div>
+         -->
+        <!-- 隣の画像に移動するボタン -->
+        <!-- <div id="change-buttons">
+            <button onclick="changeToPrevItem()"></button>
+            <button onclick="changeToNextItem()"></button>
+        </div>
+    </div> -->
+    
+    <span th:insert="~{fragments/footer :: footer}"></span>
+
+    <script src="../../static/js/carousel.js" th:src="@{/js/carousel.js}"></script>
+</body>
+
+</html>
