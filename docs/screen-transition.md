@@ -2,7 +2,7 @@
 graph LR
   classDef default fill: #fff,stroke: #333,stroke-width: 1px;
   style funcA fill: #fff,stroke: #333,stroke-width: 1px;
-  style funcC fill: #fff,stroke: #333,stroke-width: 1px;
+ 
   style funcD fill: #fff,stroke: #333,stroke-width: 1px;
   style header fill: #fff,stroke: #333,stroke-width: 1px;
 
@@ -19,10 +19,6 @@ graph LR
 
  
 
-  subgraph funcC [機能C]
-    レシピ詳細 --> 機能C-2
-    レシピ詳細 --> 機能C-3
-  end
 
   subgraph funcD [機能D]
     レシピ新規投稿 -- 未ログインの場合 --> ログイン

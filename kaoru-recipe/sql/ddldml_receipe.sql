@@ -21,12 +21,20 @@ CREATE TABLE users (
     password TEXT
 );
 
--- テストユーザー
+-- テストユーザー1
 INSERT INTO
     users (name, email, password)
 VALUES (
         'test',
         'test@mail',
+        'testtest'
+    );
+-- テストユーザー2
+INSERT INTO
+    users (name, email, password)
+VALUES (
+        'test2',
+        'test2@mail',
         'testtest'
     );
 
