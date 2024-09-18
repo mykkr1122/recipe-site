@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span th:insert="~{fragments/header :: header}"></span>
+    <div>ユーザー情報管理</div>
+    <form action="">
+
+        <div><img src="" alt="ユーザー写真"></div>
+        <div>ユーザー名</div>
+        <div><input type="text" placeholder="現在のユーザー名"></div>
+
+        <div>メールアドレス</div>
+        <div><input type="text" placeholder="現在のメールアドレス"></div>
+
+        <div>パスワード</div>
+        <div><input type="password"></div>
+
+        <div>確認用パスワード</div>
+        <div><input type="password"></div>
+
+        <button>変更を保存する</button>
+    </form>
+</body>
+</html>

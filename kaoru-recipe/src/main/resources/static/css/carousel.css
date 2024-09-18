@@ -1,156 +1,175 @@
 /* カルーセル/////////////////////////// */
-.carousel{
-    margin: 0 auto;
-    --carousel-width: 420px;
-    --carousel-height: 240px;
-    width: var(--carousel-width);
-    height: var(--carousel-height);
-    position: relative;
-  }
+.carousel {
+  margin: 0 auto;
+  --carousel-width: 420px;
+  --carousel-height: 240px;
+  width: var(--carousel-width);
+  height: var(--carousel-height);
+  position: relative;
+}
 
 
-  /* items----------------------------------- */
-  .carousel #items-wrapper{
-    margin: 0 auto;
-    width: calc(var(--carousel-width) - 100px);
-    height: var(--carousel-height);
-    position: relative;
-    overflow: hidden;
-  }
-  .carousel #items-wrapper img{
-    width: 100%;
-    position: absolute;
-    top: 20%;
-    left: 0;
+/* items----------------------------------- */
+.carousel #items-wrapper {
+  margin: 0 auto;
+  width: calc(var(--carousel-width) - 100px);
+  height: var(--carousel-height);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel #items-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  opacity: 0;
+}
+
+.carousel #items-wrapper img.active {
+  opacity: 1;
+}
+
+.carousel #items-wrapper img.fadeRightIn {
+  animation-name: fadeRightIn;
+  animation-duration: 1s;
+  opacity: 1;
+}
+
+.carousel #items-wrapper img.fadeLeftOut {
+  animation-name: fadeLeftOut;
+  animation-duration: 1s;
+}
+
+.carousel #items-wrapper img.fadeLeftIn {
+  animation-name: fadeLeftIn;
+  animation-duration: 1s;
+  opacity: 1;
+}
+
+.carousel #items-wrapper img.fadeRightOut {
+  animation-name: fadeRightOut;
+  animation-duration: 1s;
+}
+
+@keyframes fadeRightIn {
+  0% {
     opacity: 0;
+    transform: translateX(100%);
   }
-  .carousel #items-wrapper img.active{
+
+  100% {
     opacity: 1;
+    transform: translateX(0%);
   }
-  .carousel #items-wrapper img.fadeRightIn{
-    animation-name: fadeRightIn;
-    animation-duration: 1s;
+}
+
+@keyframes fadeLeftOut {
+  0% {
     opacity: 1;
+    transform: translateX(0%);
   }
-  .carousel #items-wrapper img.fadeLeftOut{
-    animation-name: fadeLeftOut;
-    animation-duration: 1s;
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
   }
-  .carousel #items-wrapper img.fadeLeftIn{
-    animation-name: fadeLeftIn;
-    animation-duration: 1s;
+}
+
+@keyframes fadeLeftIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
     opacity: 1;
+    transform: translateX(0%);
   }
-  .carousel #items-wrapper img.fadeRightOut{
-    animation-name: fadeRightOut;
-    animation-duration: 1s;
-  }
-  @keyframes fadeRightIn {
-    0% {
-      opacity: 0;
-      transform: translateX(100%); 
-    }      
-    100% { 
-      opacity: 1;
-      transform: translateX(0%); 
-    }
-  }
-  @keyframes fadeLeftOut{
-    0% {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-  }
-  @keyframes fadeLeftIn {
-    0% { 
-      opacity: 0;
-      transform: translateX(-100%); 
-    }      
-    100% { 
-      opacity: 1;
-      transform: translateX(0%); 
-    }
-  }
-  @keyframes fadeRightOut{
-    0% {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
+}
+
+@keyframes fadeRightOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
   }
 
-
-  /* select-tabs----------------------------- */
-  #select-tabs{
-    width: var(--carousel-width);
-    text-align: center;
-    position: absolute;
-    top: 90%;
-    left: 0;
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
   }
-  #select-tabs button{
-      margin: 0 3px;
-      width: 20px;
-      height: 20px;
-      background-color: #ccc;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-  }
-  #select-tabs button.active{
-    background-color: #888;
-  }
+}
 
 
-  /* change-buttons-------------------------- */
-  #change-buttons{
-    width: var(--carousel-width);
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 45%;
-    left: 0;
-  }
-  #change-buttons button{
-    width: 36px;
-    height: 36px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    --arrow-size: 10px;
-    --arrow-design: 3px solid black;
-    --arrow-rotate: -45deg;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* select-tabs----------------------------- */
+#select-tabs {
+  width: var(--carousel-width);
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  left: 0;
+}
 
-  /* 前へボタン */
-  #change-buttons button:nth-child(1)::after{
-    content: "";
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    display: block;
-    border-top: var(--arrow-design);
-    border-left: var(--arrow-design);
-    transform: rotate(var(--arrow-rotate));
-  }
-  /* 次へボタン */
-  #change-buttons button:nth-child(2)::after{
-    content: "";
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    display: block;
-    border-bottom: var(--arrow-design);
-    border-right: var(--arrow-design);
-    transform: rotate(var(--arrow-rotate));
-  }
+#select-tabs button {
+  margin: 0 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
 
+#select-tabs button.active {
+  background-color: #888;
+}
+
+
+/* change-buttons-------------------------- */
+#change-buttons {
+  width: var(--carousel-width);
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 45%;
+  left: 0;
+}
+
+#change-buttons button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  --arrow-size: 10px;
+  --arrow-design: 3px solid black;
+  --arrow-rotate: -45deg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 前へボタン */
+#change-buttons button:nth-child(1)::after {
+  content: "";
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  display: block;
+  border-top: var(--arrow-design);
+  border-left: var(--arrow-design);
+  transform: rotate(var(--arrow-rotate));
+}
+
+/* 次へボタン */
+#change-buttons button:nth-child(2)::after {
+  content: "";
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  display: block;
+  border-bottom: var(--arrow-design);
+  border-right: var(--arrow-design);
+  transform: rotate(var(--arrow-rotate));
+}

@@ -1,9 +1,9 @@
 spring:
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/recipe
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver
 server:
   servlet:
     context-path: /recipe

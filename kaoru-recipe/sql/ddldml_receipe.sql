@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS recipe;
 
+-- レシピテーブル
 CREATE TABLE recipe (
     id SERIAL PRIMARY KEY,
     title TEXT,
@@ -14,6 +15,7 @@ CREATE TABLE recipe (
 
 DROP TABLE IF EXISTS users;
 
+-- ユーザーテーブル
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT,
@@ -21,12 +23,32 @@ CREATE TABLE users (
     password TEXT
 );
 
--- テストユーザー
+DROP TABLE IF EXISTS likes;
+-- いいねテーブル
+CREATE TABLE likes (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
+    display_flag BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (user_id, recipe_id)
+);
+
+-- テストユーザー1
 INSERT INTO
     users (name, email, password)
 VALUES (
         'test',
         'test@mail',
+        'testtest'
+    );
+-- テストユーザー2
+INSERT INTO
+    users (name, email, password)
+VALUES (
+        'test2',
+        'test2@mail',
         'testtest'
     );
 

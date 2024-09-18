@@ -6,7 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kaoru-recipe</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // ゴミ箱アイコンボタンがクリックされたとき
+            $(".delete_button").on("click", function (event) {
+                if (!confirm("このレシピを削除してもよろしいですか？")) {
+                    // ユーザーがキャンセルした場合、デフォルトのリンクアクションを無効化
+                    event.preventDefault();
+                }
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -14,11 +25,32 @@
     <div class="content">
         <div class="recipe">
             <div>
-                <div class="recipe_title" th:text="${recipe.title}">料理名</div>
+                <div class="title_and_edit_button">
+                    <div class="recipe_title" th:text="${recipe.title}">料理名</div>
+                    <div class="edit_and_delete_wrapper">
+                        <div class="edit_button_wrapper">
+                            <button class="edit_and_delete_button">
+                                <a th:href="@{'/toEdit?id=' + ${recipe.id}}">
+                                    <img src="../../static/img/pencil.png" th:src="@{/img/pencil.png}" alt="ペンアイコン"
+                                        class="pencil_icon">
+                                </a>
+                            </button>
+                        </div>
+                        <div class="edit_button_wrapper">
+                            <button class="edit_and_delete_button delete_button">
+                                <a th:href="@{'/delete?id=' + ${recipe.id}}">
+                                    <img src="../../static/img/trash.jpg" th:src="@{/img/trash.jpg}" alt="ゴミ箱アイコン"
+                                        class="trash_icon"></a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="img_and_distriction">
                     <div class="img_wrapper">
-                        <img src="../../static/img/test.png" th:src="@{${recipe.imagePath} }" alt="料理の写真"
-                            class="img_recipe">
+                        <span class="recipe_card_img_link">
+                            <img src="../../static/img/test.png" th:src="@{${recipe.imagePath} }" alt="料理の写真"
+                                class="img_recipe">
+                        </span>
                     </div>
                     <div>
                         <div class="introduction" th:text="${recipe.introduction}">紹介文</div>
@@ -47,12 +79,18 @@
                 <hr>
                 <div class="recipe_detail">
                     <div class="content_title">コツ・ポイント</div>
-                    <div class="detail"  th:text="${recipe.point}">コツ・ポイントの説明</div>
+                    <div class="detail" th:text="${recipe.point}">コツ・ポイントの説明</div>
                 </div>
             </div>
 
 
         </div>
+        <form th:action="@{/top}">
+            <div class="top_page_button_wrapper">
+                <button class="login_button">トップページへ戻る</button>
+            </div>
+        </form>
+
     </div>
     <span th:insert="~{fragments/footer :: footer}"></span>
 

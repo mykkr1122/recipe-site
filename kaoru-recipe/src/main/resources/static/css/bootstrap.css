@@ -6,17 +6,32 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 0;
+    padding-top: 80px;
     background-color: wheat;
 }
 
 .content {
     flex: 1;
+    padding: 20px;
+
 }
 
 header {
-    height: 160px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ヘッダーを前面に表示 */
+    z-index: 1000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 }
 
@@ -29,10 +44,11 @@ footer {
 .header_content {
     display: flex;
     align-items: center;
-    padding-top: 10px;
+    /* padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 20px; */
+    width: 95%;
 }
 
 .welcome_message {
@@ -41,6 +57,7 @@ footer {
 
 .menu {
     margin-left: auto;
+    margin-right: 20px;
 }
 
 .menu a {
@@ -197,12 +214,17 @@ label {
     height: 350px;
     width: 240px;
     margin-right: 40px;
+}
 
+.recipe_card_img_link {
+    display: block;
 }
 
 .img_recipe {
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    vertical-align: bottom;
 }
 
 .title {
@@ -354,7 +376,8 @@ label {
     width: 100%;
     height: 100%;
 }
-.autocomplete{  
+
+.autocomplete {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -376,24 +399,73 @@ label {
     border: solid 0.1px;
 }
 
-.pagination ul{
+.pagination ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
     padding: 0;
 }
+
 .pagination li {
     margin: 0 5px;
 }
+
 .pagination a {
     text-decoration: none;
     color: #007bff;
 }
+
 .pagination a:hover {
     text-decoration: underline;
 }
+
 .pagination .active a {
     font-weight: bold;
     color: #000;
 }
 
+.delete_button_form {
+    display: flex;
+    justify-content: center;
+}
+
+
+.delete_button {
+    font-size: 16px;
+}
+
+.title_and_edit_button {
+    display: flex;
+}
+
+.edit_and_delete_wrapper {
+    display: flex;
+    margin-left: auto;
+}
+
+.edit_button_wrapper {
+    width: 60px;
+    height: 40px;
+    margin-right: 8px;
+}
+
+
+.edit_and_delete_button {
+    border: 0.3px solid gray;
+    width: 56px;
+    height: 50px;
+    background-color: white;
+}
+
+.pencil_icon {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+
+}
+
+.trash_icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
