@@ -1,12 +1,12 @@
 package com.example.kaorurecipe.Contoller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.kaorurecipe.Domain.Users;
 import com.example.kaorurecipe.Form.RecipeResisterForm;
 import com.example.kaorurecipe.Service.RecipeService;
 
@@ -27,9 +27,14 @@ public class InsertRecipeInfoController {
         return recipeResisterForm;
     }
 
+    /**
+     * レシピ登録画面を表示
+     * 
+     * @return
+     */
     @RequestMapping("recipeResister")
     public String recipeResister() {
-        User user = (User) session.getAttribute("user");
+        Users user = (Users) session.getAttribute("user");
         if (user == null) {
             return "/login/login";
         } else {
@@ -37,6 +42,12 @@ public class InsertRecipeInfoController {
         }
     }
 
+    /**
+     * レシピ登録
+     * 
+     * @param form
+     * @return
+     */
     @PostMapping("/saveRecipe")
     public String saveRecipe(RecipeResisterForm form) {
 

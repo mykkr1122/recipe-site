@@ -18,7 +18,7 @@
             <div th:if="${session.user != null}" th:text="'ようこそ！ ' +${session.user.name} + ' さん'"
                 class="welcome_message">ようこそ◯◯さん</div>
 
-            
+
             <div class="menu">
                 <a th:if="${session.user == null}" th:href="@{/toLogin}" href="login/login.html">ログイン</a>
                 <a th:if="${session.user != null}" th:href="@{/logout}" href="recipe/top.html">ログアウト</a>
@@ -28,7 +28,7 @@
             </div>
 
         </div>
-        <div class="autocomplete">
+        <!-- <div class="autocomplete">
             <hr>
             <form action="recipe/top.html" th:action="@{/top}" method="get">
                 <div class="autocomplete_content">
@@ -38,7 +38,7 @@
                         <button type="submit" value="検索" class="autocomplete_button">検索</button>
                 </div>
             </form>
-        </div>
+        </div> -->
     </header>
 </body>
 

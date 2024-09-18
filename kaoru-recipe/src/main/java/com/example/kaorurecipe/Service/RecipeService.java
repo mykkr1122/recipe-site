@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.kaorurecipe.Domain.Recipe;
+import com.example.kaorurecipe.Form.RecipeEditForm;
 import com.example.kaorurecipe.Form.RecipeResisterForm;
 import com.example.kaorurecipe.Repository.RecipeRepository;
 
@@ -53,5 +54,18 @@ public class RecipeService {
 
     public int countRecipe() {
         return repository.countRecipe();
+    }
+
+    public void editRecipe(RecipeEditForm form) {
+        Recipe recipe = new Recipe();
+        recipe.setId(form.getId());
+        recipe.setTitle(form.getTitle());
+        recipe.setIntroduction(form.getIntroduction());
+        recipe.setServing(form.getServing());
+        recipe.setIngredients(form.getIngredients());
+        recipe.setDetail(form.getDetail());
+        recipe.setPoint(form.getPoint());
+        recipe.setImagePath(form.getImagePath());
+        repository.editRecipe(recipe);
     }
 }

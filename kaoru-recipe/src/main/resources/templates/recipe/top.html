@@ -15,7 +15,7 @@
         <div class="recipe">
             <div class="recipe_card" th:each="recipe : ${recipes}">
                 <div class="img_wrapper">
-                    <a th:href="@{'/detail?id=' + ${recipe.id}}">
+                    <a th:href="@{'/detail?id=' + ${recipe.id}}" class="recipe_card_img_link">
                         <img th:src="@{ ${recipe.imagePath} }" alt="料理の写真" class="img_recipe">
                     </a>
                 </div>
@@ -63,7 +63,7 @@
         <!-- 画像表示部分 -->
         <div id="items-wrapper">
             <img class="active" th:src="@{/img/breakfast.jpeg}" alt="朝食">
-            <img class="active" th:src="@{/img/fish.jpeg}" alt="魚"> 
+            <img class="active" th:src="@{/img/fish.jpeg}" alt="魚">
             <img class="active" th:src="@{/img/humberger.jpeg}" alt="ハンバーガー">
             <img class="active" th:src="@{/img/onigiri.jpg}" alt="おにぎり">
             <img class="active" th:src="@{/img/ホットケーキ.jpg}" alt="ホットケーキ">
@@ -77,7 +77,7 @@
             <button onclick="changeToSelectItem(3)"></button>
             <button onclick="changeToSelectItem(4)"></button>
         </div>
-        
+
         <!-- 隣の画像に移動するボタン -->
         <div id="change-buttons">
             <button onclick="changeToPrevItem()"></button>
@@ -86,27 +86,6 @@
     </div>
 
 
-    <!-- <div class="carousel"> -->
-        <!-- 画像表示部分 -->
-        <!-- <div id="items-wrapper">
-            <div th:each="recipe, stat : ${recipes}" th:class="${stat.index == 0} ? 'active' : ''">
-                <img th:src="@{${recipe.imagePath}}">
-            </div>
-        </div>
-     -->
-        <!-- 画像をタブで切り替えるボタン -->
-        <!-- <div id="select-tabs">
-            <button th:each="recipe, stat : ${recipes}" th:class="${stat.index == 0} ? 'active' : ''"
-                    th:onclick="'changeToSelectItem(' + ${stat.index} + ')'"></button>
-        </div>
-         -->
-        <!-- 隣の画像に移動するボタン -->
-        <!-- <div id="change-buttons">
-            <button onclick="changeToPrevItem()"></button>
-            <button onclick="changeToNextItem()"></button>
-        </div>
-    </div> -->
-    
     <span th:insert="~{fragments/footer :: footer}"></span>
 
     <script src="../../static/js/carousel.js" th:src="@{/js/carousel.js}"></script>

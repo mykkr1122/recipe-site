@@ -24,7 +24,7 @@ public class LoginController {
     private HttpSession session;
 
     @ModelAttribute
-    public LoginForm setUpLoginForm(){
+    public LoginForm setUpLoginForm() {
         LoginForm loginForm = new LoginForm();
         return loginForm;
     }
@@ -44,12 +44,12 @@ public class LoginController {
             return toLogin();
         } else {
             session.setAttribute("user", user);
-            return "forward:/top";
+            return "redirect:/top";
         }
     }
 
     @RequestMapping("logout")
-    public String logout(){
+    public String logout() {
         session.invalidate();
         return "/login/logout";
     }

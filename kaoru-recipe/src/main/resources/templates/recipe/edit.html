@@ -15,10 +15,9 @@
     <div class="content">
         <div class="recipe">
             <div>
-                <div class="resister_title">レシピを登録する</div>
-                <form method="post" th:action="@{/saveRecipe}" th:object="${recipeResisterForm}"
-                    enctype="multipart/form-data">
-                    <input type="text" name="title" placeholder="レシピのタイトル/料理名" class="title_input" th:field="*{title}">
+                <div class="resister_title">レシピを編集する</div>
+                <form method="post" th:action="@{/edit}" th:object="${recipeEditForm}" enctype="multipart/form-data">
+                    <input type="text" name="title" class="title_input" th:field="*{title}">
                     <div class="img_and_distriction">
                         <div class="resister_img_wrapper">
                             <div>
@@ -57,10 +56,11 @@
                             placeholder="このレシピを作るときのコツやポイントがあれば入力してください。" th:field="*{point}"></textarea>
                     </div>
                     <div class="button_wrapper">
-                        <button class="login_button">登録</button>
+                        <button class="login_button">変更内容を登録</button>
                     </div>
 
                     <!-- 隠しフィールド -->
+                    <input type="hidden" th:field="*{id}">
                     <input type="hidden" id="hiddenServing" name="serving" th:field="*{serving}">
                     <input type="hidden" id="hiddenIngredients" name="ingredients" th:field="*{ingredients}">
 
@@ -113,6 +113,12 @@
 
             </div>
         </div>
+        <form th:action="@{/top}">
+            <div class="top_page_button_wrapper">
+                <button class="login_button">トップページへ戻る</button>
+            </div>
+        </form>
+
     </div>
     <span th:insert="~{fragments/footer :: footer}"></span>
     <!-- ↓jQuery読み込み -->

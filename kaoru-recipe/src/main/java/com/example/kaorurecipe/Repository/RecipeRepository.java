@@ -105,6 +105,7 @@ public class RecipeRepository {
         String sql = """
                 SELECT id, title, introduction, serving, ingredients, detail, point, image_path, display_flag
                   FROM recipe
+                 ORDER BY id
                  WHERE display_flag = false;
                 """;
         List<Recipe> recipes = template.query(sql, RECIPE_ROW_MAPPER);
@@ -140,11 +141,19 @@ public class RecipeRepository {
         template.update(sql, param);
     }
 
+    /**
+     * レシピ一覧を返すメソッド
+     * 
+     * @param offset
+     * @param limit
+     * @return
+     */
     public List<Recipe> findRecipesWithPagination(int offset, int limit) {
         String sql = """
                 SELECT id, title, introduction, serving, ingredients, detail, point, image_path, display_flag
                  FROM recipe
                  WHERE display_flag = false
+                 ORDER BY id
                  LIMIT :limit OFFSET :offset;
                 """;
 
@@ -153,6 +162,38 @@ public class RecipeRepository {
         param.addValue("offset", offset);
 
         return template.query(sql, param, RECIPE_ROW_MAPPER);
+    }
+
+    /**
+     * レシピの編集
+     * 
+     * @param id
+     * @param recipe
+     */
+    public void editRecipe(Recipe recipe) {
+        String sql = """
+                UPDATE recipe
+                   SET title = :title,
+                        introduction = :introduction,
+                        serving = :serving,
+                        ingredients = :ingredients,
+                        detail = :detail,
+                        point = :point,
+                        image_path = :imagePath
+                 WHERE id = :id;
+                """;
+
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        param.addValue("id", recipe.getId());
+        param.addValue("title", recipe.getTitle());
+        param.addValue("introduction", recipe.getIntroduction());
+        param.addValue("serving", recipe.getServing());
+        param.addValue("ingredients", recipe.getIngredients());
+        param.addValue("detail", recipe.getDetail());
+        param.addValue("point", recipe.getPoint());
+        param.addValue("imagePath", recipe.getImagePath());
+
+        template.update(sql, param);
     }
 
 }
